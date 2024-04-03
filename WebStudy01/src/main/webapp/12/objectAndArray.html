@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>
+	<input type="text" id="propName" placeholder="프로퍼티 이름" />
+	<input type="text" id="propValue" placeholder="프로퍼티 값" />
+	<button id="addProperty">프로퍼티 추가</button>
+</p>
+<script>
+	// obj.prop6 = "value6";	// 닷노테이션표현으로도 가능
+	
+	let obj = {
+		prop1 : "value1",	// 프로젝트 이름을 식별자로 줌
+		"prop2" : "value2",	// 프로젝트 이름을 값으로 줌
+		["prop4"]:"value4",	// 연산배열구조
+	};
+	let array = ['a', 'b', 'c'];
+	
+	const printObject = (targetObj)=>{
+		console.log("-------------------------------------")
+		for(let n in targetObj) console.log(n, targetObj[n]);
+		console.log("-------------------------------------")
+	};
+	
+	const printArray1 = (targetArray)=>{
+		for(let i=0; i<targetArray.length; i++){	
+			console.log(i, targetArray[i]);
+		}
+	}
+	
+	const printArray2 = (targetArray)=>{	
+		for(let element of targetArray)	console.log(element); // of 집합객체
+	}
+	
+	addProperty.addEventListener("click", ()=>{
+		let name = propName.value;
+		let value = propValue.value;
+		if(!(name in obj))	{ // in연산자(obj안에 name있으면 true) - 존재여부
+			obj[name] = value; 	// 닷노테이션 사용불가
+			propName.value = "";
+			propValue.value = "";
+			printObject(obj);
+		}
+	});
+</script>
+</body>
+</html>
